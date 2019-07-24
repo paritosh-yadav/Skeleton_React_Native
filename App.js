@@ -9,7 +9,7 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { HomeScreen, DetailScreen } from "@component";
 
-AppNavigator = createStackNavigator(
+const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     Details: DetailScreen
