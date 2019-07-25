@@ -6,6 +6,6 @@
  * @flow
  */
 
-import AppNavigator from "routes";
+import AppContainer from "routes";
 
-export default AppNavigator;
+export default AppContainer;

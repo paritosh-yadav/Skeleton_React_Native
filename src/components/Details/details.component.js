@@ -15,8 +15,37 @@ import {
   Colors,
 } from "react-native/Libraries/NewAppScreen";
 
-export default class DetailScreen extends React.Component {
+export class ModalScreen extends React.Component {
   render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 30 }}>This is a modal!</Text>
+        <Button
+          onPress={() => this.props.navigation.goBack()}
+          title="Dismiss"
+        />
+      </View>
+    );
+  }
+}
+
+export default class DetailScreen extends React.Component {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    const { params } = navigation.state;
+
+    return {
+      title: params ? params.otherParam : "Details",
+      /* These values are used instead of the shared configuration! */
+      headerStyle: {
+        backgroundColor: navigationOptions.headerTintColor,
+      },
+      headerTintColor: navigationOptions.headerStyle.backgroundColor,
+    };
+  };
+  render() {
+    const { navigation } = this.props;
+    const itemId = navigation.getParam("itemId", "NO-ID");
+    const otherParam = navigation.getParam("otherParam", "some default value");
     return (
       <Fragment>
         <StatusBar barStyle="dark-content" />
@@ -31,18 +60,18 @@ export default class DetailScreen extends React.Component {
               </View>
             )}
             <Button
-              title="Go to Details... again"
-              onPress={() => this.props.navigation.push("Home")}
+              title="Go to Profile"
+              onPress={() => this.props.navigation.navigate("Profile")}
             />
             <Button
-              title="Go back"
-              onPress={() => this.props.navigation.goBack()}
+              onPress={() => navigation.navigate("MyModal")}
+              title="Modal"
             />
             <View style={styles.body}>
               <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Step #Two</Text>
+                <Text style={styles.sectionTitle}>Step #Two {itemId}</Text>
                 <Text style={styles.sectionDescription}>
-                  Edit <Text style={styles.highlight}>App.js</Text> to change this
+                  Edit <Text style={styles.highlight}>App.js {otherParam}</Text> to change this
                   screen and then come back to see your edits.
                 </Text>
               </View>
