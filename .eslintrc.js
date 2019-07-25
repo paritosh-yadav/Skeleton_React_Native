@@ -188,12 +188,12 @@ module.exports = {
     "comma-spacing": 0,
     "no-multi-spaces": 0,
     "brace-style": 0,                // enforce one true brace style (off by default)
-    "camelcase": 0,                  // require camel case names
+    "camelcase": 1,                  // require camel case names
     "consistent-this": [1, "self"],            // enforces consistent naming when capturing the current execution context (off by default)
     "eol-last": 1,                   // enforce newline at the end of file, with no multiple empty lines
     "func-names": 0,                 // require function expressions to have a name (off by default)
     "func-style": 0,                 // enforces use of function declarations or expressions (off by default)
-    "new-cap": 0,                    // require a capital letter for constructors
+    "new-cap": 1,                    // require a capital letter for constructors
     "new-parens": 1,                 // disallow the omission of parentheses when invoking a constructor with no arguments
     "no-nested-ternary": 0,          // disallow nested ternary expressions (off by default)
     "no-array-constructor": 1,       // disallow use of the Array constructor
@@ -202,7 +202,7 @@ module.exports = {
     "no-spaced-func": 1,             // disallow space between function identifier and application
     "no-ternary": 0,                 // disallow the use of ternary operators (off by default)
     "no-trailing-spaces": 1,         // disallow trailing whitespace at the end of lines
-    "no-underscore-dangle": 0,       // disallow dangling underscores in identifiers
+    "no-underscore-dangle": 1,       // disallow dangling underscores in identifiers
     "no-mixed-spaces-and-tabs": 1,   // disallow mixed spaces and tabs for indentation
     "quotes": [1, "double", "avoid-escape"], // specify whether double or single quotes should be used
     "quote-props": 0,                // require quotes around object literal property names (off by default)
