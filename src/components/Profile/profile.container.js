@@ -50,7 +50,7 @@ export default class ProfileScreen extends React.Component {
         this.props.navigation.setParams({ onHeaderRightTap: this.onHeaderRightTap });
     }
     onHeaderRightTap = () => {
-        alert("This is a button!");
+        console.log("This is a button!");
     }
     render() {
         return (

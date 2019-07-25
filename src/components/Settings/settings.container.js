@@ -30,8 +30,8 @@ export default class SettingsScreen extends React.Component {
                         <Header />
                         <View style={styles.body}>
                             <Button
-                                title="Go to Details"
-                                onPress={() => this.props.navigation.navigate("Details")} // Navigate back to 'Details' clearing all the stack
+                                title="Go to Profile"
+                                onPress={() => this.props.navigation.navigate("Profile")} // Navigate back to 'Details' clearing all the stack
                             // onPress={() => this.props.navigation.push("Details")} // push 'Details' again on the stack maintaining back stack
                             />
                             <View style={styles.sectionContainer}>
