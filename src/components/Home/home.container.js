@@ -6,16 +6,18 @@ import {
     View,
     Text,
     StatusBar,
-    Button
+    Button,
 } from "react-native";
 
 import { Header, Colors } from "react-native/Libraries/NewAppScreen";
+import { MenuButton } from "component";
 // import Config from "react-native-config";
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            title: navigation.getParam("otherParam", "Home")
+            title: navigation.getParam("otherParam", "Home"),
+            headerLeft: <MenuButton onTap={navigation.openDrawer} />,
         };
     };
     render() {

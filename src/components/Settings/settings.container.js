@@ -9,15 +9,18 @@ import {
     StatusBar,
     Button,
 } from "react-native";
-
 import {
     Header,
     Colors,
 } from "react-native/Libraries/NewAppScreen";
+import { MenuButton } from "component";
 
 export default class SettingsScreen extends React.Component {
-    static navigationOptions = {
-        title: "Settings",
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: "Settings",
+            headerLeft: <MenuButton onTap={navigation.openDrawer} />,
+        };
     };
     render() {
         return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "react-native";
-import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
-import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen } from "component";
+import { createStackNavigator, createAppContainer, createBottomTabNavigator, createDrawerNavigator } from "react-navigation";
+import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu } from "component";
 import { home, settings } from "image";
 
 const defaultNavigationOptions = {
@@ -81,10 +81,19 @@ const TabNavigator = createBottomTabNavigator(
     }
 );
 
+const DrawerNavigator = createDrawerNavigator(
+    {
+        Tabs: TabNavigator
+    },
+    {
+        contentComponent: props => <SideMenu {...props} />,
+    }
+);
+
 const RootNavigator = createStackNavigator(
     {
-        Tabs: {
-            screen: TabNavigator,
+        Drawer: {
+            screen: DrawerNavigator,
         },
         MyModal: {
             screen: ModalScreen,
