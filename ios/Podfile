@@ -28,6 +28,8 @@ target 'SkeletonApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNCAsyncStorage', :podspec => '../node_modules/@react-native-community/async-storage/RNCAsyncStorage.podspec'
+
   target 'SkeletonAppTests' do
     inherit! :search_paths
     # Pods for testing

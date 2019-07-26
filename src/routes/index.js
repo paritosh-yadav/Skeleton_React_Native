@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "react-native";
-import { createStackNavigator, createAppContainer, createBottomTabNavigator, createDrawerNavigator } from "react-navigation";
-import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu } from "component";
+import { createStackNavigator, createAppContainer, createBottomTabNavigator, createDrawerNavigator, createSwitchNavigator } from "react-navigation";
+import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu, AuthLoadingScreen, LoginScreen } from "component";
 import { home, settings } from "image";
 
 const defaultNavigationOptions = {
@@ -37,6 +37,15 @@ const defaultNavigationOptions = {
         },
     }
 };
+
+const AuthStack = createStackNavigator(
+    {
+        Login: LoginScreen
+    },
+    {
+        ...defaultNavigationOptions.stackNavigator,
+    }
+);
 
 const HomeStack = createStackNavigator(
     {
@@ -90,7 +99,7 @@ const DrawerNavigator = createDrawerNavigator(
     }
 );
 
-const RootNavigator = createStackNavigator(
+const AppNavigator = createStackNavigator(
     {
         Drawer: {
             screen: DrawerNavigator,
@@ -105,4 +114,15 @@ const RootNavigator = createStackNavigator(
     }
 );
 
-export default createAppContainer(RootNavigator);
+const SwitchNavigator = createSwitchNavigator(
+    {
+        AuthLoading: AuthLoadingScreen,
+        App: AppNavigator,
+        Auth: AuthStack,
+    },
+    {
+        initialRouteName: "AuthLoading",
+    }
+);
+
+export default createAppContainer(SwitchNavigator);

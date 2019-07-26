@@ -5,5 +5,7 @@ import SettingsScreen from "./Settings/settings.container";
 import ProfileScreen from "./Profile/profile.container";
 import { SideMenu } from "./SideMenu/sideMenu.component";
 import { MenuButton } from "./SideMenu/sideMenu.component";
+import AuthLoadingScreen from "./AuthLoading/authLoading.container";
+import LoginScreen from "./Login/login.container";
 
-export { DetailScreen, ModalScreen, HomeScreen, SettingsScreen, ProfileScreen, SideMenu, MenuButton };
+export { DetailScreen, ModalScreen, HomeScreen, SettingsScreen, ProfileScreen, SideMenu, MenuButton, AuthLoadingScreen, LoginScreen };
