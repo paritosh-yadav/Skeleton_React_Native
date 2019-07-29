@@ -6,6 +6,21 @@
  * @flow
  */
 
+import React from "react";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 import AppContainer from "routes";
+import { combineReducers } from "reducer";
 
-export default AppContainer;
+const store = createStore(combineReducers);
+
+export default class App extends React.Component {
+
+    render() {
+        return (
+            <Provider store={store} >
+                <AppContainer />
+            </Provider>
+        );
+    }
+}
