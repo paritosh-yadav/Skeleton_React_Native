@@ -30,6 +30,8 @@ target 'SkeletonApp' do
 
   pod 'RNCAsyncStorage', :podspec => '../node_modules/@react-native-community/async-storage/RNCAsyncStorage.podspec'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'SkeletonAppTests' do
     inherit! :search_paths
     # Pods for testing
