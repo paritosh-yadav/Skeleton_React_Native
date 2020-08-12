@@ -1,14 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+import { signOut } from "reducer";
 import {
     StyleSheet,
     Image,
-    ScrollView,
-    View,
-    Text,
     TouchableOpacity,
 } from "react-native";
+import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
-import { SafeAreaView } from "react-navigation";
 import { menu } from "image";
 
 export const MenuButton = props => (
@@ -19,31 +18,20 @@ export const MenuButton = props => (
 
 const signOutAsync = async (props) => {
     await AsyncStorage.clear();
-    props.navigation.navigate("Auth");
+    props.signOut();
 };
 
-export const SideMenu = props => (
-    <ScrollView>
-        <SafeAreaView style={styles.container} forceInset={{ top: "always", horizontal: "never" }}>
-            <View>
-                <TouchableOpacity onPress={() => props.navigation.navigate("Home")} style={styles.menuItems}>
-                    <Text>Home</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => props.navigation.navigate("Settings")} style={styles.menuItems}>
-                    <Text>Settings</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => signOutAsync(props)} style={styles.menuItems}>
-                    <Text>Logout</Text>
-                </TouchableOpacity>
-            </View>
-        </SafeAreaView>
-    </ScrollView>
-);
+const SideMenu = props => {
+    return (
+        <DrawerContentScrollView {...props}>
+            <DrawerItem label="Home" onPress={() => props.navigation.navigate("Home")} style={styles.menuItems} />
+            <DrawerItem label="Settings" onPress={() => props.navigation.navigate("Settings")} style={styles.menuItems} />
+            <DrawerItem label="Logout" onPress={() => signOutAsync(props)} style={styles.menuItems} />
+        </DrawerContentScrollView>
+    );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     menuButton: {
         width: 20,
         height: 20,
@@ -54,3 +42,10 @@ const styles = StyleSheet.create({
         marginVertical: 5,
     }
 });
+
+// Maping dispatch with components props
+const mapDispatchToProps = dispatch => ({
+    signOut: () => dispatch(signOut())
+});
+
+export default connect(null, mapDispatchToProps)(SideMenu);

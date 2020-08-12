@@ -6,12 +6,16 @@ import { HomeComponent } from "./home.component";
 // import Config from "react-native-config";
 
 class HomeContainer extends React.Component {
-    static navigationOptions = ({ navigation }) => {
-        return {
-            title: navigation.getParam("otherParam", "Home"),
-            headerLeft: <MenuButton onTap={navigation.openDrawer} />,
-        };
-    };
+    componentDidMount() {
+        const { navigation } = this.props;
+        navigation.setOptions({
+            title: "Home Screen",
+            headerLeft: () => (
+                <MenuButton onTap={navigation.openDrawer} />
+            ),
+        });
+    }
+
     render() {
         return (
             <HomeComponent navigation={this.props.navigation} counter={this.props.counter} changeCounter={this.props.changeCounter} />
@@ -19,10 +23,12 @@ class HomeContainer extends React.Component {
     }
 }
 
+// Maping store slice with components props
 const mapStateToProps = state => ({
     counter: state.homerReducer.counter
 });
 
+// Maping dispatch with components props
 const mapDispatchToProps = dispatch => ({
     changeCounter: () => dispatch(changeCounter())
 });

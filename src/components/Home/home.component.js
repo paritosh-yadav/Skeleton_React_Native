@@ -38,8 +38,8 @@ export function HomeComponent({ navigation, counter, changeCounter }) {
                         <Button
                             title="Update the title"
                             onPress={() =>
-                                navigation.setParams({
-                                    otherParam: "Home Updated!"
+                                navigation.setOptions({
+                                    title: "Home Updated!"
                                 })
                             }
                         />
