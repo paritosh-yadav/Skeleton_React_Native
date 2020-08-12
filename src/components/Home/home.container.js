@@ -23,10 +23,12 @@ class HomeContainer extends React.Component {
     }
 }
 
+// Maping store slice with components props
 const mapStateToProps = state => ({
     counter: state.homerReducer.counter
 });
 
+// Maping dispatch with components props
 const mapDispatchToProps = dispatch => ({
     changeCounter: () => dispatch(changeCounter())
 });
