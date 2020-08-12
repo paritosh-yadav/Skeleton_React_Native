@@ -43,9 +43,9 @@ export default class DetailScreen extends React.Component {
     };
   };
   render() {
-    const { navigation } = this.props;
-    const itemId = navigation.getParam("itemId", "NO-ID");
-    const otherParam = navigation.getParam("otherParam", "some default value");
+    const { navigation, route } = this.props;
+    const itemId = route.params ?.itemId ?? "NO-ID";
+    const otherParam = route.params ?.otherParam ?? "some default value";
     return (
       <Fragment>
         <StatusBar barStyle="dark-content" />
