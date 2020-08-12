@@ -16,12 +16,15 @@ import {
 import { MenuButton } from "component";
 
 export default class SettingsScreen extends React.Component {
-    static navigationOptions = ({ navigation }) => {
-        return {
+    componentDidMount() {
+        const { navigation } = this.props;
+        navigation.setOptions({
             title: "Settings",
-            headerLeft: <MenuButton onTap={navigation.openDrawer} />,
-        };
-    };
+            headerLeft: () => (
+                <MenuButton onTap={navigation.openDrawer} />
+            ),
+        });
+    }
     render() {
         return (
             <Fragment>
