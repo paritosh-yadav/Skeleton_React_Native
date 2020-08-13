@@ -1,3 +1,4 @@
+// @flow
 import logo from "./logo.png";
 import backIcon from "./backicon.png";
 import home from "./home.png";

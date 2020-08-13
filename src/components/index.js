@@ -1,3 +1,4 @@
+// @flow
 import DetailScreen from "./Details/details.component";
 import { ModalScreen } from "./Details/details.component";
 import HomeScreen from "./Home/home.container";

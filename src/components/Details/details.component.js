@@ -1,4 +1,4 @@
-
+// @flow
 import React, { Fragment } from "react";
 import {
   SafeAreaView,
@@ -15,7 +15,11 @@ import {
   Colors,
 } from "react-native/Libraries/NewAppScreen";
 
-export class ModalScreen extends React.Component {
+type Props = {
+  navigation: Object,
+  route: Object
+}
+export class ModalScreen extends React.Component<Props> {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -29,8 +33,8 @@ export class ModalScreen extends React.Component {
   }
 }
 
-export default class DetailScreen extends React.Component {
-  static navigationOptions = ({ navigation, navigationOptions }) => {
+export default class DetailScreen extends React.Component<Props> {
+  static navigationOptions = ({ navigation, navigationOptions }: { navigation: Object, navigationOptions: Object }) => {
     const { params } = navigation.state;
 
     return {

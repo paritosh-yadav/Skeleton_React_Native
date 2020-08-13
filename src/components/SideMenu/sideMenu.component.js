@@ -1,6 +1,7 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
-import { signOut } from "reducer";
+import { signOut } from "../../redux";
 import {
     StyleSheet,
     Image,
@@ -8,20 +9,27 @@ import {
 } from "react-native";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
-import { menu } from "image";
+import { menu } from "../../assets";
 
-export const MenuButton = props => (
+type MenuButtonProps = {
+    onTap: () => void,
+};
+export const MenuButton = (props: MenuButtonProps) => (
     <TouchableOpacity onPress={props.onTap}>
         <Image source={menu} style={styles.menuButton} resizeMode="contain" />
     </TouchableOpacity>
 );
 
-const signOutAsync = async (props) => {
+const signOutAsync = async (props: Object) => {
     await AsyncStorage.clear();
     props.signOut();
 };
 
-const SideMenu = props => {
+type SideMenuProps = {
+    navigation: Object,
+}
+
+const SideMenu = (props: SideMenuProps) => {
     return (
         <DrawerContentScrollView {...props}>
             <DrawerItem label="Home" onPress={() => props.navigation.navigate("Home")} style={styles.menuItems} />

@@ -1,3 +1,4 @@
+// @flow
 import React, { Fragment } from "react";
 import {
     SafeAreaView,
@@ -10,7 +11,12 @@ import {
 } from "react-native";
 import { Header, Colors } from "react-native/Libraries/NewAppScreen";
 
-export function HomeComponent({ navigation, counter, changeCounter }) {
+type Props = {
+    navigation: Object,
+    counter: number,
+    changeCounter: () => void,
+};
+export function HomeComponent({ navigation, counter, changeCounter }: Props) {
     return (
         <Fragment>
             <StatusBar barStyle="dark-content" />
@@ -49,7 +55,7 @@ export function HomeComponent({ navigation, counter, changeCounter }) {
                         />
 
                         <View style={styles.sectionContainer}>
-                            <Text style={styles.sectionTitle}>Step #One {counter}</Text>
+                            <Text style={styles.sectionTitle}>Step #One{counter.toString()}</Text>
                             <Text style={styles.sectionDescription}>
                                 Edit <Text style={styles.highlight}>App.js</Text> to change
                                 this screen and then come back to see your edits.

@@ -1,3 +1,4 @@
+// @flow
 import React from "react";
 import {
     ActivityIndicator,
@@ -6,10 +7,7 @@ import {
     View,
 } from "react-native";
 
-export default class AuthLoadingScreen extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+export default class AuthLoadingScreen extends React.Component<{}> {
     // Render Splash, etc.
     render() {
         return (

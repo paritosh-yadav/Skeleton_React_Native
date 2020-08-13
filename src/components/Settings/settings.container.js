@@ -1,4 +1,4 @@
-
+// @flow
 import React, { Fragment } from "react";
 import {
     SafeAreaView,
@@ -13,9 +13,13 @@ import {
     Header,
     Colors,
 } from "react-native/Libraries/NewAppScreen";
-import { MenuButton } from "component";
+import { MenuButton } from "../index";
 
-export default class SettingsScreen extends React.Component {
+type Props = {
+    navigation: Object,
+};
+
+export default class SettingsScreen extends React.Component<Props> {
     componentDidMount() {
         const { navigation } = this.props;
         navigation.setOptions({
