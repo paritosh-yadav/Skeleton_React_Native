@@ -1,4 +1,4 @@
-
+// @flow
 import React, { Fragment } from "react";
 import {
     SafeAreaView,
@@ -16,9 +16,9 @@ import {
     Colors,
 } from "react-native/Libraries/NewAppScreen";
 
-import { logo, backIcon } from "image";
+import { logo, backIcon } from "../../assets";
 
-class LogoTitle extends React.Component {
+class LogoTitle extends React.Component<{}> {
     render() {
         return (
             <Image
@@ -30,28 +30,24 @@ class LogoTitle extends React.Component {
     }
 }
 
-const RenderRightHeaderButton = ({ onHeaderRightTap }) =>
-    <Button
-        onPress={onHeaderRightTap}
-        title="Info"
-        color="#fff"
-    />;
-
-export default class ProfileScreen extends React.Component {
-    static navigationOptions = ({ navigation }) => {
-        return {
+type Props = {
+    navigation: Object,
+};
+export default class ProfileScreen extends React.Component<Props> {
+    componentDidMount() {
+        const { navigation } = this.props;
+        navigation.setOptions({
             headerTitle: <LogoTitle />,
-            headerRight: <RenderRightHeaderButton onHeaderRightTap={navigation.getParam("onHeaderRightTap")} />,
-            headerBackImage: <Image source={backIcon} style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode="contain" />,
-        };
-    };
-    constructor(props) {
-        super(props);
-        this.props.navigation.setParams({ onHeaderRightTap: this.onHeaderRightTap });
+            headerBackTitleVisible: false,
+            headerRight: () => (<Button onPress={this.onHeaderRightTap} title="Info" color="#fff" />),
+            headerBackImage: () => (<Image source={backIcon} style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode="contain" />)
+        });
     }
+
     onHeaderRightTap = () => {
         console.log("This is a button!");
     }
+
     render() {
         return (
             <Fragment>

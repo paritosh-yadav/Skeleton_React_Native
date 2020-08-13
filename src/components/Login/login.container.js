@@ -1,6 +1,7 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
-import { signIn } from "reducer";
+import { signIn } from "../../redux";
 import {
     StyleSheet,
     Button,
@@ -8,7 +9,12 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 
-class LoginScreen extends React.Component {
+type Props = {
+    navigation: Object,
+    signIn: (string) => void,
+};
+
+class LoginScreen extends React.Component<Props> {
 
     componentDidMount() {
         const { navigation } = this.props;

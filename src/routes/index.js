@@ -1,3 +1,4 @@
+// @flow
 import "react-native-gesture-handler";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
@@ -8,11 +9,18 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { restoreToken } from "reducer";
-import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu, AuthLoadingScreen, LoginScreen } from "component";
-import { home, settings } from "image";
+import { restoreToken } from "../redux";
+import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu, AuthLoadingScreen, LoginScreen } from "../components";
+import { home, settings } from "../assets";
 
-const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }) => {
+type RouteConfigProps = {
+    isLoading: boolean,
+    isSignout: boolean,
+    userToken: string,
+    fetchToken: (string) => void,
+}
+
+const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfigProps) => {
 
     // Configuration for stack naigator "screenOption"
     const stackNavigatorScreenOptions = {
@@ -54,7 +62,7 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }) => {
     useEffect(() => {
         // Fetch the token from storage then navigate to our appropriate place
         const bootstrapAsync = async () => {
-            let token;
+            let token: string = "";
 
             try {
                 token = await AsyncStorage.getItem("userToken");

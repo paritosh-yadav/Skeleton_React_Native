@@ -5,11 +5,13 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint .",
+    "lint": "eslint src/",
     "precommit": "npm run lint",
     "postinstall": "rm -rf .git/hooks/pre-push && rm -rf .git/hooks/pre-commit",
     "ios": "ENVFILE=.env.development react-native run-ios",
-    "android": "react-native run-android"
+    "android": "react-native run-android",
+    "build": "babel src/ -d lib/",
+    "prepublish": "yarn run build"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
@@ -32,7 +34,9 @@
     "redux": "^4.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-flow": "^7.10.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
     "babel-eslint": "^10.0.2",
@@ -40,6 +44,7 @@
     "eslint": "^6.5.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-native": "^3.7.0",
+    "flow-bin": "0.122.0",
     "husky": "^3.0.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",

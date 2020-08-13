@@ -1,11 +1,17 @@
+// @flow
 import React from "react";
 import { connect } from "react-redux";
-import { changeCounter } from "reducer";
-import { MenuButton } from "component";
+import { changeCounter } from "../../redux";
+import { MenuButton } from "../index";
 import { HomeComponent } from "./home.component";
 // import Config from "react-native-config";
 
-class HomeContainer extends React.Component {
+type Props = {
+    navigation: Object,
+    counter: number,
+    changeCounter: () => void,
+};
+class HomeContainer extends React.Component<Props> {
     componentDidMount() {
         const { navigation } = this.props;
         navigation.setOptions({
