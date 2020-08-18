@@ -5,9 +5,11 @@ import { signIn } from "statemanagement";
 import {
     Button,
     View,
+    Text,
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import styles from "./login.container.style";
+import { commonStyle } from "globalstyles";
 
 type Props = {
     navigation: Object,
@@ -26,7 +28,9 @@ class LoginScreen extends React.Component<Props> {
     render() {
         return (
             <View style={styles.container}>
+                <Text style={styles.welcomeText}>Welcome</Text>
                 <Button title="Sign in!" onPress={this.signInAsync} />
+                <Text style={commonStyle.largeButtonText}>Tap to sign in</Text>
             </View>
         );
     }
