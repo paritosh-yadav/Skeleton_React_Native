@@ -6,7 +6,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint src/",
-    "precommit": "npm run lint",
+    "precommit": "yarn run lint && yarn run flow",
     "postinstall": "rm -rf .git/hooks/pre-push && rm -rf .git/hooks/pre-commit",
     "ios": "ENVFILE=.env.development react-native run-ios",
     "android": "react-native run-android",
