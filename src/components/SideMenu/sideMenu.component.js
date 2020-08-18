@@ -1,14 +1,14 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { signOut } from "statemanagement";
 import {
-    StyleSheet,
     Image,
     TouchableOpacity,
 } from "react-native";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
+import styles from "./sideMenu.component.style";
+import { signOut } from "statemanagement";
 import { menu } from "assets";
 
 type MenuButtonProps = {
@@ -38,18 +38,6 @@ const SideMenu = (props: SideMenuProps) => {
         </DrawerContentScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-    menuButton: {
-        width: 20,
-        height: 20,
-        marginLeft: 10,
-    },
-    menuItems: {
-        marginHorizontal: 10,
-        marginVertical: 5,
-    }
-});
 
 // Maping dispatch with components props
 const mapDispatchToProps = dispatch => ({

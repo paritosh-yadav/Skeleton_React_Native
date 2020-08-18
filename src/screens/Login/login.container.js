@@ -3,11 +3,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { signIn } from "statemanagement";
 import {
-    StyleSheet,
     Button,
     View,
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
+import styles from "./login.container.style";
 
 type Props = {
     navigation: Object,
@@ -36,13 +36,6 @@ class LoginScreen extends React.Component<Props> {
         this.props.signIn("dummy-token");
     };
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-    }
-});
 
 // Maping dispatch with components props
 const mapDispatchToProps = dispatch => ({
