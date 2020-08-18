@@ -10,8 +10,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import { restoreToken } from "../redux";
-import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu, AuthLoadingScreen, LoginScreen } from "../components";
-import { home, settings } from "../assets";
+import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu, AuthLoadingScreen, LoginScreen } from "components";
+import { home, settings } from "assets";
 
 type RouteConfigProps = {
     isLoading: boolean,

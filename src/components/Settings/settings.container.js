@@ -13,7 +13,7 @@ import {
     Header,
     Colors,
 } from "react-native/Libraries/NewAppScreen";
-import { MenuButton } from "../index";
+import { MenuButton } from "components";
 
 type Props = {
     navigation: Object,

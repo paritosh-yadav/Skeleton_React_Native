@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
-import { menu } from "../../assets";
+import { menu } from "assets";
 
 type MenuButtonProps = {
     onTap: () => void,

@@ -16,7 +16,7 @@ import {
     Colors,
 } from "react-native/Libraries/NewAppScreen";
 
-import { logo, backIcon } from "../../assets";
+import { logo, backIcon } from "assets";
 
 class LogoTitle extends React.Component<{}> {
     render() {

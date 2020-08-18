@@ -8,11 +8,9 @@
 
 import React from "react";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
 import AppContainer from "./routes";
-import { combineReducers } from "./redux";
+import { store } from "./redux";
 
-const store = createStore(combineReducers);
 type Props = { /* ... */ };
 
 type State = {
