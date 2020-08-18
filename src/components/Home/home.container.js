@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { changeCounter } from "../../redux";
+import { changeCounter } from "statemanagement";
 import { MenuButton } from "components";
 import { HomeComponent } from "./home.component";
 // import Config from "react-native-config";

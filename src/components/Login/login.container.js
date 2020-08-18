@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { signIn } from "../../redux";
+import { signIn } from "statemanagement";
 import {
     StyleSheet,
     Button,

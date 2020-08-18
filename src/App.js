@@ -8,8 +8,8 @@
 
 import React from "react";
 import { Provider } from "react-redux";
-import AppContainer from "./routes";
-import { store } from "./redux";
+import AppContainer from "routes";
+import { store } from "statemanagement";
 
 type Props = { /* ... */ };
 

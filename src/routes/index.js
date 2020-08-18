@@ -9,7 +9,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { restoreToken } from "../redux";
+import { restoreToken } from "statemanagement";
 import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu, AuthLoadingScreen, LoginScreen } from "components";
 import { home, settings } from "assets";
 
