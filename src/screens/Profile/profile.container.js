@@ -36,7 +36,7 @@ export default class ProfileScreen extends React.Component<Props> {
             headerTitle: <LogoTitle />,
             headerBackTitleVisible: false,
             headerRight: () => (<Button onPress={this.onHeaderRightTap} title="Info" color="#fff" />),
-            headerBackImage: () => (<Image source={backIcon} style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode="contain" />)
+            headerBackImage: () => (<Image source={backIcon} style={styles.headerBackImageStyle} resizeMode="contain" />)
         });
     }
 

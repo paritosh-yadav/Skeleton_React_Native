@@ -1,16 +1,16 @@
 import { StyleSheet } from "react-native";
-import theme from "./theme.style";
+import { themeConfig, appTheme } from "./theme.style";
 
 export default StyleSheet.create({
     largeButtonText: {
-        fontSize: theme.FONT_SIZE_LARGE,
-        fontWeight: theme.FONT_WEIGHT_BOLD
+        fontSize: themeConfig.FONT_SIZE_LARGE,
+        fontWeight: themeConfig.FONT_WEIGHT_BOLD
     },
     largeHeaderText: {
-        fontSize: theme.FONT_SIZE_LARGE
+        fontSize: themeConfig.FONT_SIZE_LARGE
     },
     mediumHeaderText: {
-        fontSize: theme.FONT_SIZE_MEDIUM,
-        color: theme.PRIMARY_COLOR
+        fontSize: themeConfig.FONT_SIZE_MEDIUM,
+        color: appTheme.colors.secondary
     }
 });

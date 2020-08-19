@@ -1,5 +1,6 @@
 // @flow
 import { StyleSheet } from "react-native";
+import { themeStyle } from "globalstyles";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default StyleSheet.create({
@@ -39,4 +40,10 @@ export default StyleSheet.create({
         paddingRight: 12,
         textAlign: "right",
     },
+    headerBackImageStyle: {
+        width: 20,
+        height: 20,
+        marginLeft: 5,
+        tintColor: themeStyle.appTheme.colors.primaryContrast
+    }
 });

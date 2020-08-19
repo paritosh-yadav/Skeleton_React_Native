@@ -29,8 +29,8 @@ class LoginScreen extends React.Component<Props> {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcomeText}>Welcome</Text>
-                <Button title="Sign in!" onPress={this.signInAsync} />
-                <Text style={commonStyle.largeButtonText}>Tap to sign in</Text>
+                <Button title="Tap to sign in" onPress={this.signInAsync} />
+                <Text style={commonStyle.largeButtonText}>Sign in!</Text>
             </View>
         );
     }
