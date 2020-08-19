@@ -24,8 +24,7 @@ type RouteConfigProps = {
 
 const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfigProps) => {
     // Configuration for stack naigator "screenOption"
-    const stackNavigatorScreenOptions = () => {
-        const { colors } = useTheme();
+    const stackNavigatorScreenOptions = (colors) => {
         return {
             headerStyle: {
                 backgroundColor: colors.primary,
@@ -87,8 +86,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     //Stack for Home screens
     const HomeStackScreen = () => {
+        const { colors } = useTheme();
         return (
-            <HomeStack.Navigator screenOptions={stackNavigatorScreenOptions}>
+            <HomeStack.Navigator screenOptions={stackNavigatorScreenOptions(colors)}>
                 <HomeStack.Screen name="Home" component={HomeScreen} />
                 <HomeStack.Screen name="Details" component={DetailScreen} />
                 <HomeStack.Screen name="Profile" component={ProfileScreen} />
@@ -98,8 +98,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     //Stack for Settings screens
     const SettingStackScreen = () => {
+        const { colors } = useTheme();
         return (
-            <SettingsStack.Navigator screenOptions={stackNavigatorScreenOptions}>
+            <SettingsStack.Navigator screenOptions={stackNavigatorScreenOptions(colors)}>
                 <SettingsStack.Screen name="Settings" component={SettingsScreen} />
                 <SettingsStack.Screen name="Profile" component={ProfileScreen} />
             </SettingsStack.Navigator>
@@ -108,8 +109,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     //Stack for modal
     const ModalStackScreen = () => {
+        const { colors } = useTheme();
         return (
-            <ModalStack.Navigator mode="modal" screenOptions={stackNavigatorScreenOptions}>
+            <ModalStack.Navigator mode="modal" screenOptions={stackNavigatorScreenOptions(colors)}>
                 <ModalStack.Screen name="MyModal" component={ModalScreen} />
             </ModalStack.Navigator>
         );

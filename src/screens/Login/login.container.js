@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { signIn } from "statemanagement";
 import {
     Button,
@@ -11,8 +12,9 @@ import AsyncStorage from "@react-native-community/async-storage";
 import styles from "./login.container.style";
 import { commonStyle } from "globalstyles";
 
+type LoginScreenNavigationProp = StackNavigationProp<null, 'Login'>;
 type Props = {
-    navigation: Object,
+    navigation: LoginScreenNavigationProp,
     signIn: (string) => void,
 };
 

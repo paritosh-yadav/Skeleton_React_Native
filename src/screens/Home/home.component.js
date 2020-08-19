@@ -8,11 +8,13 @@ import {
     StatusBar,
     Button,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import styles from "./home.component.style";
 
+type HomeScreenNavigationProp = StackNavigationProp<null, 'Home'>;
 type Props = {
-    navigation: Object,
+    navigation: HomeScreenNavigationProp,
     counter: number,
     changeCounter: () => void,
 };

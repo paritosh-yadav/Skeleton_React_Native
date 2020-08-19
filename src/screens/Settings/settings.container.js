@@ -8,12 +8,14 @@ import {
     StatusBar,
     Button,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import { MenuButton } from "components";
 import styles from "./settings.container.style";
 
+type SettingsScreenNavigationProp = StackNavigationProp<null, 'Settings'>;
 type Props = {
-    navigation: Object,
+    navigation: SettingsScreenNavigationProp,
 };
 
 export default class SettingsScreen extends React.Component<Props> {

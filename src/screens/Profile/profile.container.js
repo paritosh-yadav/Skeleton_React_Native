@@ -9,6 +9,7 @@ import {
     Button,
     Image,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 import { Header } from "react-native/Libraries/NewAppScreen";
 import styles from "./profile.container.style";
@@ -26,8 +27,9 @@ class LogoTitle extends React.Component<{}> {
     }
 }
 
+type ProfileScreenNavigationProp = StackNavigationProp<null, 'Profile'>;
 type Props = {
-    navigation: Object,
+    navigation: ProfileScreenNavigationProp,
 };
 export default class ProfileScreen extends React.Component<Props> {
     componentDidMount() {

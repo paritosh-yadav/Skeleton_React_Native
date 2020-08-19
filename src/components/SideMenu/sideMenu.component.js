@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
     Image,
     TouchableOpacity,
@@ -25,8 +26,9 @@ const signOutAsync = async (props: Object) => {
     props.signOut();
 };
 
+type SideMenuNavigationProp = StackNavigationProp<null, 'SideMenu'>;
 type SideMenuProps = {
-    navigation: Object,
+    navigation: SideMenuNavigationProp,
 }
 
 const SideMenu = (props: SideMenuProps) => {

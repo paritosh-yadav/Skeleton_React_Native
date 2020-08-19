@@ -8,12 +8,20 @@ import {
   StatusBar,
   Button,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
 import { Header } from "react-native/Libraries/NewAppScreen";
 import styles from "./details.container.style";
 
+type RootStackParamList = {
+  itemId: number;
+  otherParam: string;
+};
+type DetailsScreenRouteProp = RouteProp<RootStackParamList, 'Profile'>;
+type DetailsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Details'>;
 type Props = {
-  navigation: Object,
-  route: Object
+  navigation: DetailsScreenNavigationProp,
+  route: DetailsScreenRouteProp
 }
 export class ModalScreen extends React.Component<Props> {
   render() {
