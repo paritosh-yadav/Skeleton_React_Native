@@ -2,7 +2,6 @@
 import React, { Fragment } from "react";
 import {
     SafeAreaView,
-    StyleSheet,
     ScrollView,
     View,
     Text,
@@ -10,13 +9,11 @@ import {
     Button,
     Image,
 } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-import {
-    Header,
-    Colors,
-} from "react-native/Libraries/NewAppScreen";
-
-import { logo, backIcon } from "../../assets";
+import { Header } from "react-native/Libraries/NewAppScreen";
+import styles from "./profile.container.style";
+import { logo, backIcon } from "assets";
 
 class LogoTitle extends React.Component<{}> {
     render() {
@@ -30,8 +27,9 @@ class LogoTitle extends React.Component<{}> {
     }
 }
 
+type ProfileScreenNavigationProp = StackNavigationProp<null, 'Profile'>;
 type Props = {
-    navigation: Object,
+    navigation: ProfileScreenNavigationProp,
 };
 export default class ProfileScreen extends React.Component<Props> {
     componentDidMount() {
@@ -40,7 +38,7 @@ export default class ProfileScreen extends React.Component<Props> {
             headerTitle: <LogoTitle />,
             headerBackTitleVisible: false,
             headerRight: () => (<Button onPress={this.onHeaderRightTap} title="Info" color="#fff" />),
-            headerBackImage: () => (<Image source={backIcon} style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode="contain" />)
+            headerBackImage: () => (<Image source={backIcon} style={styles.headerBackImageStyle} resizeMode="contain" />)
         });
     }
 
@@ -72,42 +70,3 @@ export default class ProfileScreen extends React.Component<Props> {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    scrollView: {
-        backgroundColor: Colors.lighter,
-    },
-    engine: {
-        position: "absolute",
-        right: 0,
-    },
-    body: {
-        backgroundColor: Colors.white,
-    },
-    sectionContainer: {
-        marginTop: 32,
-        paddingHorizontal: 24,
-    },
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: "600",
-        color: Colors.black,
-    },
-    sectionDescription: {
-        marginTop: 8,
-        fontSize: 18,
-        fontWeight: "400",
-        color: Colors.dark,
-    },
-    highlight: {
-        fontWeight: "700",
-    },
-    footer: {
-        color: Colors.dark,
-        fontSize: 12,
-        fontWeight: "600",
-        padding: 4,
-        paddingRight: 12,
-        textAlign: "right",
-    },
-});

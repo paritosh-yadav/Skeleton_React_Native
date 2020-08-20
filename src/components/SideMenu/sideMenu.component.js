@@ -1,15 +1,16 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { signOut } from "../../redux";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
-    StyleSheet,
     Image,
     TouchableOpacity,
 } from "react-native";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-community/async-storage";
-import { menu } from "../../assets";
+import styles from "./sideMenu.component.style";
+import { signOut } from "statemanagement";
+import { menu } from "assets";
 
 type MenuButtonProps = {
     onTap: () => void,
@@ -25,8 +26,9 @@ const signOutAsync = async (props: Object) => {
     props.signOut();
 };
 
+type SideMenuNavigationProp = StackNavigationProp<null, 'SideMenu'>;
 type SideMenuProps = {
-    navigation: Object,
+    navigation: SideMenuNavigationProp,
 }
 
 const SideMenu = (props: SideMenuProps) => {
@@ -38,18 +40,6 @@ const SideMenu = (props: SideMenuProps) => {
         </DrawerContentScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-    menuButton: {
-        width: 20,
-        height: 20,
-        marginLeft: 10,
-    },
-    menuItems: {
-        marginHorizontal: 10,
-        marginVertical: 5,
-    }
-});
 
 // Maping dispatch with components props
 const mapDispatchToProps = dispatch => ({

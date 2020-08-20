@@ -2,10 +2,10 @@
 import React from "react";
 import {
     ActivityIndicator,
-    StyleSheet,
     StatusBar,
     View,
 } from "react-native";
+import styles from "./authLoading.component.style";
 
 export default class AuthLoadingScreen extends React.Component<{}> {
     // Render Splash, etc.
@@ -18,10 +18,3 @@ export default class AuthLoadingScreen extends React.Component<{}> {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-    }
-});

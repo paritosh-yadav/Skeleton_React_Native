@@ -1,13 +1,15 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { changeCounter } from "../../redux";
-import { MenuButton } from "../index";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { changeCounter } from "statemanagement";
+import { MenuButton } from "components";
 import { HomeComponent } from "./home.component";
 // import Config from "react-native-config";
 
+type HomeScreenNavigationProp = StackNavigationProp<null, 'Home'>;
 type Props = {
-    navigation: Object,
+    navigation: HomeScreenNavigationProp,
     counter: number,
     changeCounter: () => void,
 };

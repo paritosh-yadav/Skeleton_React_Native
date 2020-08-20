@@ -1,16 +1,20 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { signIn } from "../../redux";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { signIn } from "statemanagement";
 import {
-    StyleSheet,
     Button,
     View,
+    Text,
 } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
+import styles from "./login.container.style";
+import { commonStyle } from "globalstyles";
 
+type LoginScreenNavigationProp = StackNavigationProp<null, 'Login'>;
 type Props = {
-    navigation: Object,
+    navigation: LoginScreenNavigationProp,
     signIn: (string) => void,
 };
 
@@ -26,7 +30,9 @@ class LoginScreen extends React.Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Button title="Sign in!" onPress={this.signInAsync} />
+                <Text style={styles.welcomeText}>Welcome</Text>
+                <Button title="Tap to sign in" onPress={this.signInAsync} />
+                <Text style={commonStyle.largeButtonText}>Sign in!</Text>
             </View>
         );
     }
@@ -36,13 +42,6 @@ class LoginScreen extends React.Component<Props> {
         this.props.signIn("dummy-token");
     };
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-    }
-});
 
 // Maping dispatch with components props
 const mapDispatchToProps = dispatch => ({

@@ -4,14 +4,16 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Image, } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import { restoreToken } from "../redux";
-import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, SideMenu, AuthLoadingScreen, LoginScreen } from "../components";
-import { home, settings } from "../assets";
+import { restoreToken } from "statemanagement";
+import { SideMenu, AuthLoadingScreen } from "components";
+import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, LoginScreen } from "screens";
+import { home, settings } from "assets";
+import { themeStyle } from "globalstyles";
 
 type RouteConfigProps = {
     isLoading: boolean,
@@ -21,17 +23,18 @@ type RouteConfigProps = {
 }
 
 const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfigProps) => {
-
     // Configuration for stack naigator "screenOption"
-    const stackNavigatorScreenOptions = {
-        headerStyle: {
-            backgroundColor: "#f4511e",
-        },
-        headerBackTitle: null,
-        headerTintColor: "#fff",
-        headerTitleStyle: {
-            fontWeight: "bold",
-        },
+    const stackNavigatorScreenOptions = (colors) => {
+        return {
+            headerStyle: {
+                backgroundColor: colors.primary,
+            },
+            headerBackTitle: null,
+            headerTintColor: colors.primaryContrast,
+            headerTitleStyle: {
+                fontWeight: "bold",
+            },
+        };
     };
 
     // Configuration for tab naigator "screenOption"
@@ -83,8 +86,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     //Stack for Home screens
     const HomeStackScreen = () => {
+        const { colors } = useTheme();
         return (
-            <HomeStack.Navigator screenOptions={stackNavigatorScreenOptions}>
+            <HomeStack.Navigator screenOptions={stackNavigatorScreenOptions(colors)}>
                 <HomeStack.Screen name="Home" component={HomeScreen} />
                 <HomeStack.Screen name="Details" component={DetailScreen} />
                 <HomeStack.Screen name="Profile" component={ProfileScreen} />
@@ -94,8 +98,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     //Stack for Settings screens
     const SettingStackScreen = () => {
+        const { colors } = useTheme();
         return (
-            <SettingsStack.Navigator screenOptions={stackNavigatorScreenOptions}>
+            <SettingsStack.Navigator screenOptions={stackNavigatorScreenOptions(colors)}>
                 <SettingsStack.Screen name="Settings" component={SettingsScreen} />
                 <SettingsStack.Screen name="Profile" component={ProfileScreen} />
             </SettingsStack.Navigator>
@@ -104,8 +109,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     //Stack for modal
     const ModalStackScreen = () => {
+        const { colors } = useTheme();
         return (
-            <ModalStack.Navigator mode="modal" screenOptions={stackNavigatorScreenOptions}>
+            <ModalStack.Navigator mode="modal" screenOptions={stackNavigatorScreenOptions(colors)}>
                 <ModalStack.Screen name="MyModal" component={ModalScreen} />
             </ModalStack.Navigator>
         );
@@ -122,12 +128,13 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     //Stack for tabs
     const TabStackScreen = () => {
+        const { colors } = useTheme();
         return (
             <Tab.Navigator
                 screenOptions={tabNavigatorScreenOptions}
                 tabBarOptions={{
-                    activeTintColor: "tomato",
-                    inactiveTintColor: "gray",
+                    activeTintColor: colors.secondary,
+                    inactiveTintColor: colors.grey,
                 }}>
                 <Tab.Screen name="Home" component={HomeStackScreen} />
                 <Tab.Screen name="Settings" component={SettingStackScreen} />
@@ -141,7 +148,7 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
     }
 
     return (
-        <NavigationContainer>
+        <NavigationContainer theme={themeStyle.appTheme}>
             <RootStack.Navigator mode="modal" screenOptions={stackNavigatorScreenOptions}>
                 {userToken
                     ? (<>
