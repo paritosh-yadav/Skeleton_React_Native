@@ -8,15 +8,19 @@
 
 import React from "react";
 import { Provider } from "react-redux";
+import axios from "axios";
+import Config from "react-native-config";
 import AppContainer from "routes";
 import { store } from "statemanagement";
-
 type Props = { /* ... */ };
 
 type State = {
 };
 export default class App extends React.Component<Props, State> {
-
+    constructor(props: Props) {
+        super(props);
+        axios.defaults.baseURL = Config.API_URL;
+    }
     render() {
         return (
             <Provider store={store} >
