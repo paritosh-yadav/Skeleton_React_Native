@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import { RESTORE_TOKEN, SIGN_IN, SIGN_OUT } from "../constants/login.constants";
 
 type RestoreTokenAction = { type: RESTORE_TOKEN, token: string };

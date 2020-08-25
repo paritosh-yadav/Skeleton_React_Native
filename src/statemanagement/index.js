@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import combineReducers from "./reducers/combineReducer";
 import store from "./store/store";
 import { changeCounter, fetchingBreweries } from "./actions/home.action";

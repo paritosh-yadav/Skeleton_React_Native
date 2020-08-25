@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 export const appTheme = {
     dark: false,
     colors: {

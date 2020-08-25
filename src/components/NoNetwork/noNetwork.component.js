@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 // Render No Network Screen
 import React from "react";
 import {

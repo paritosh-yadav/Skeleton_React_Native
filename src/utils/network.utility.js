@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 // Common method for initiating API calls
 import axios from "axios";
 

@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import React, { Component, } from "react";
 import NetInfo from "@react-native-community/netinfo";
 import { NoNetworkScreen } from "components";

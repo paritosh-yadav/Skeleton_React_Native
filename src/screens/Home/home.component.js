@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import React, { Fragment } from "react";
 import {
     SafeAreaView,

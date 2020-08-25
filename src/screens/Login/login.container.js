@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import React from "react";
 import { connect } from "react-redux";
 import { StackNavigationProp } from "@react-navigation/stack";

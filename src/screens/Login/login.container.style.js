@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import { StyleSheet } from "react-native";
 import { commonStyle } from "globalstyles";
 

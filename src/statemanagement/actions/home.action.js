@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import {
     CHANGE_COUNTER,
     GET_BREWERIES_FAILED,
