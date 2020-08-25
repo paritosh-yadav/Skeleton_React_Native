@@ -1,3 +1,4 @@
 import { initiateAPICall } from "./network.utility";
 import networkDetector from "./network_detector";
-export { initiateAPICall, networkDetector };
+import constants from "./constants";
+export { initiateAPICall, networkDetector, constants };

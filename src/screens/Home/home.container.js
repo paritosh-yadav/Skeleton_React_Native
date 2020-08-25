@@ -6,7 +6,7 @@ import { changeCounter, fetchingBreweries } from "statemanagement";
 import { MenuButton } from "components";
 import { HomeComponent } from "./home.component";
 // import Config from "react-native-config";
-import { networkDetector } from "utils";
+import { networkDetector, constants } from "utils";
 
 type HomeScreenNavigationProp = StackNavigationProp<null, 'Home'>;
 type Props = {
@@ -30,7 +30,10 @@ class HomeContainer extends React.Component<Props> {
         try {
             await this.props.fetchingBreweries("breweries", null, null);
         } catch (error) {
-            console.log("HomeContainer -> fetchingBreweries -> error", error);
+            if (error.code === constants.AXIOS_TIMEOUT_ERROR_CODE) {
+                // Handle timeout
+                console.log("request timeout");
+            }
         }
     }
     render() {
