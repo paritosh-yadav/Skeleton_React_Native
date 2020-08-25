@@ -1,3 +1,3 @@
 import { initiateAPICall } from "./network.utility";
-
-export { initiateAPICall };
+import networkDetector from "./network_detector";
+export { initiateAPICall, networkDetector };

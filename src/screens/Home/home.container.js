@@ -6,6 +6,7 @@ import { changeCounter, fetchingBreweries } from "statemanagement";
 import { MenuButton } from "components";
 import { HomeComponent } from "./home.component";
 // import Config from "react-native-config";
+import { networkDetector } from "utils";
 
 type HomeScreenNavigationProp = StackNavigationProp<null, 'Home'>;
 type Props = {
@@ -60,4 +61,4 @@ const mapDispatchToProps = {
     fetchingBreweries
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(networkDetector(HomeContainer));
