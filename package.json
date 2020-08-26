@@ -10,9 +10,7 @@
     "precommit": "yarn run lint && yarn run flow",
     "postinstall": "rm -rf .git/hooks/pre-push && rm -rf .git/hooks/pre-commit",
     "ios": "ENVFILE=.env.development react-native run-ios",
-    "android": "react-native run-android",
-    "build": "babel src/ -d lib/",
-    "prepublish": "yarn run build"
+    "android": "react-native run-android"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.6.1",
