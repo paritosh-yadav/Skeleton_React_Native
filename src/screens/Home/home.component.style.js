@@ -1,9 +1,12 @@
-// @flow
+/**
+ * @flow
+ */
 import { StyleSheet } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default StyleSheet.create({
     scrollView: {
+        padding: 10,
         backgroundColor: Colors.lighter
     },
     engine: {
@@ -29,7 +32,8 @@ export default StyleSheet.create({
         color: Colors.dark
     },
     highlight: {
-        fontWeight: "700"
+        fontWeight: "700",
+        lineHeight: 20
     },
     footer: {
         color: Colors.dark,

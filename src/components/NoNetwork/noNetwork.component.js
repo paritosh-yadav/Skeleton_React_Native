@@ -1,21 +1,21 @@
 /**
  * @flow
  */
+// Render No Network Screen
 import React from "react";
 import {
-    ActivityIndicator,
     StatusBar,
+    Text,
     View,
 } from "react-native";
-import styles from "./authLoading.component.style";
+import styles from "./noNetwork.component.style";
 
-export default class AuthLoadingScreen extends React.Component<{}> {
-    // Render Splash, etc.
+export default class NoNetworkScreen extends React.Component<{}> {
     render() {
         return (
             <View style={styles.container}>
-                <ActivityIndicator />
                 <StatusBar barStyle="default" />
+                <Text>Internet connection lost !!!</Text>
             </View>
         );
     }

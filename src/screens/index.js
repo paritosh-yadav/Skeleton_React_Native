@@ -1,4 +1,6 @@
-// @flow
+/**
+ * @flow
+ */
 import DetailScreen from "./Details/details.container";
 import { ModalScreen } from "./Details/details.container";
 import HomeScreen from "./Home/home.container";
