@@ -3,7 +3,7 @@ import { render } from "@testing-library/react-native";
 import { HomeComponent } from "../src/screens/Home/home.component";
 import api from "api";
 
-jest.mock("../api");
+jest.mock("api");
 
 describe("Home Container", () => {
     const breweriesMockList = [

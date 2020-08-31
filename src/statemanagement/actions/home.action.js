@@ -7,7 +7,7 @@ import {
     GET_BREWERIES_SUCCEED,
     GET_BREWERIES_INITIATED,
 } from "../constants/home.constants";
-import api from "../../../api";
+import api from "api";
 
 type ChangeCounterAction = { type: CHANGE_COUNTER };
 export const changeCounter = (): ChangeCounterAction => ({
