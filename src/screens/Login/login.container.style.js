@@ -13,5 +13,13 @@ export default StyleSheet.create({
     welcomeText: {
         ...commonStyle.mediumHeaderText,
         fontStyle: "italic"
-    }
+    },
+    textInput: {
+        width: 200,
+        marginVertical: 5,
+        padding: 5,
+        borderWidth: 1,
+        borderColor: "orange",
+        borderRadius: 5,
+    },
 });

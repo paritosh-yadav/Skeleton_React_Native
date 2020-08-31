@@ -13,7 +13,17 @@ module.exports = {
   "plugins": [
     "react",
     "react-native",
+    "detox",
     // "prettier",
+  ],
+  overrides: [
+    {
+      files: ['*.e2e.js'],
+      env: {
+        'detox/detox': true,
+        jest: true,
+      },
+    },
   ],
 
   // Map from global var to bool specifying if it can be redefined
