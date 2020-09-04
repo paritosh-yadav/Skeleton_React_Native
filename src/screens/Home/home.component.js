@@ -46,12 +46,14 @@ export function HomeComponent({ navigation, counter, changeCounter, breweriesLis
                         }
                     />
                     <Button
+                        testID="change_counter"
                         title="Change Counter"
                         onPress={changeCounter}
                     />
 
                     <View style={styles.sectionContainer}>
-                        <Text style={styles.sectionTitle}>Counter {counter.toString()}</Text>
+                        <Text testID="screen_text" style={styles.sectionTitle}>Home Screen</Text>
+                        <Text testID="counter_value" style={styles.sectionTitle}>Counter {counter.toString()}</Text>
                         {breweriesListError &&
                             <Text>Error fetching list...</Text>
                         }

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { signIn } from "statemanagement";
 import {
+    TextInput,
     Button,
     View,
     Text,
@@ -32,8 +33,10 @@ class LoginScreen extends React.Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcomeText}>Welcome</Text>
-                <Button title="Tap to sign in" onPress={this.signInAsync} />
+                <Text testID="welcome" style={styles.welcomeText}>Welcome</Text>
+                <TextInput testID="username_textinput" style={styles.textInput} placeholder="username" />
+                <TextInput testID="password_textinput" style={styles.textInput} placeholder="password" secureTextEntry />
+                <Button testID="signin_button" title="Tap to sign in" onPress={this.signInAsync} />
                 <Text style={commonStyle.largeButtonText}>Sign in!</Text>
             </View>
         );

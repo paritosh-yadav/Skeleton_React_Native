@@ -7,7 +7,7 @@ import {
     GET_BREWERIES_SUCCEED,
     GET_BREWERIES_INITIATED,
 } from "../constants/home.constants";
-import { initiateAPICall } from "utils";
+import api from "api";
 
 type ChangeCounterAction = { type: CHANGE_COUNTER };
 export const changeCounter = (): ChangeCounterAction => ({
@@ -48,7 +48,7 @@ type ThunkAction = (dispatch: Dispatch) => any;
 export const fetchingBreweries = (endpoint: string, params: Object, payload: Object): ThunkAction => {
     return function (dispatch) {
         dispatch(initiateBreweriesFetching());
-        return initiateAPICall(endpoint, "get", params, payload).then( // API call initiated
+        return api.initiateAPICall(endpoint, "get", params, payload).then( // API call initiated
             (response) => dispatch(breweriesFetchingSucceed(response.data)),
             (error) => {
                 if (error.response) {
