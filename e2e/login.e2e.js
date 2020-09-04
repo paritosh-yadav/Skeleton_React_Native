@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+import { device, element, by } from "detox";
 describe("Example", () => {
   beforeEach(async () => {
     await device.reloadReactNative();
