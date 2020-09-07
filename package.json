@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest .*.spec.js",
-    "lint": "eslint *.js e2e/*.js __tests__/*.spec.js",
+    "lint": "eslint src/ *.js e2e/*.js __tests__/*.spec.js",
     "flow": "flow",
     "precommit": "yarn run lint && yarn run flow",
     "postinstall": "rm -rf .git/hooks/pre-push && rm -rf .git/hooks/pre-commit",
