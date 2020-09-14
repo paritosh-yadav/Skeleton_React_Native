@@ -60,3 +60,6 @@ buck-out/
 
 # Environment Files
 .env
+.env.detox
+.env.development
+.env.production
