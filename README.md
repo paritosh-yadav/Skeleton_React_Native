@@ -15,7 +15,28 @@ React Native app with industrial standards.
   - Basic signup flow
   - Free Brewery data (https://www.openbrewerydb.org/)
 
-Please create a **.env** file at the root directory and add the following lines to it:
+Please create following file at the root directory and add the following lines to it:
+
+**.env.development**
+```
+GOOGLE_MAPS_API_KEY=xyz
+API_URL=https://api.openbrewerydb.org/
+API_DRIVER=remote
+```
+
+**.env.detox**
+```
+API_DRIVER=fake
+```
+
+**.env.production**
+```
+GOOGLE_MAPS_API_KEY=prod
+API_URL=https://api.openbrewerydb.org/
+API_DRIVER=remote
+```
+
+**.env**
 ```
 GOOGLE_MAPS_API_KEY=abcdefgh
 API_URL=https://api.openbrewerydb.org/
@@ -51,6 +72,20 @@ Install the dependencies and devDependencies.
 $ cd Skeleton_React_Native
 $ yarn install
 $ pod install
+
+$ detox build -c ios
+$ detox test -c ios
+```
+
+For running unit test
+```sh
+$ yarn test
+```
+
+For running e2e test
+```sh
+$ detox build -c ios
+$ detox test -c ios
 ```
 
 License
