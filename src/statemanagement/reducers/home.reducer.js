@@ -6,24 +6,29 @@ import {
     GET_BREWERIES_FAILED,
     GET_BREWERIES_SUCCEED,
     GET_BREWERIES_INITIATED,
-} from "../constants/home.constants";
+} from '../constants/home.constants';
 
 type State = {
     +counter: number,
     +fetchingBreweriesList: boolean,
-        +breweriesList: null | Array < number >,
-            +breweriesListError: null | Object,
+    +breweriesList: null | Array<number>,
+    +breweriesListError: null | Object,
 };
 type ChangeCounterAction = { +type: CHANGE_COUNTER };
 type GetBreweriesInitiatedAction = { +type: GET_BREWERIES_INITIATED };
-type GetBreweriesSuccessAction = { +type: GET_BREWERIES_SUCCEED, +payload: Object };
-type GetBreweriesFailedAction = { +type: GET_BREWERIES_FAILED, +payload: Object };
+type GetBreweriesSuccessAction = {
+    +type: GET_BREWERIES_SUCCEED,
+    +payload: Object,
+};
+type GetBreweriesFailedAction = {
+    +type: GET_BREWERIES_FAILED,
+    +payload: Object,
+};
 
-type HomerActionsType =
-    & ChangeCounterAction
-    & GetBreweriesInitiatedAction
-    & GetBreweriesSuccessAction
-    & GetBreweriesFailedAction;
+type HomerActionsType = ChangeCounterAction &
+    GetBreweriesInitiatedAction &
+    GetBreweriesSuccessAction &
+    GetBreweriesFailedAction;
 
 const initialState = {
     counter: 0,
@@ -31,7 +36,10 @@ const initialState = {
     breweriesList: null,
     breweriesListError: null,
 };
-const homerReducer = (state: State = initialState, action: HomerActionsType): State => {
+const homerReducer = (
+    state: State = initialState,
+    action: HomerActionsType,
+): State => {
     switch (action.type) {
         case CHANGE_COUNTER:
             return {
@@ -59,7 +67,6 @@ const homerReducer = (state: State = initialState, action: HomerActionsType): St
                 ...state,
                 fetchingBreweriesList: false,
                 breweriesListError: error,
-
             };
         default:
             return state;

@@ -1,7 +1,7 @@
 /**
  * @flow
  */
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 import {
     SafeAreaView,
     StatusBar,
@@ -9,9 +9,9 @@ import {
     View,
     Text,
     Button,
-} from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import styles from "./home.component.style";
+} from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import styles from './home.component.style';
 
 type HomeScreenNavigationProp = StackNavigationProp<null, 'Home'>;
 type Props = {
@@ -20,9 +20,16 @@ type Props = {
     changeCounter: () => void,
     breweriesList: Array<Object> | null,
     fetchingBreweriesList: boolean,
-    breweriesListError: null | Object
+    breweriesListError: null | Object,
 };
-export function HomeComponent({ navigation, counter, changeCounter, breweriesList, fetchingBreweriesList, breweriesListError }: Props) {
+export function HomeComponent({
+    navigation,
+    counter,
+    changeCounter,
+    breweriesList,
+    fetchingBreweriesList,
+    breweriesListError,
+}: Props) {
     return (
         <Fragment>
             <StatusBar barStyle="light-content" />
@@ -31,9 +38,9 @@ export function HomeComponent({ navigation, counter, changeCounter, breweriesLis
                     <Button
                         title="Go to Details"
                         onPress={() =>
-                            navigation.navigate("Details", {
+                            navigation.navigate('Details', {
                                 itemId: 86,
-                                otherParam: "anything"
+                                otherParam: 'anything',
                             })
                         }
                     />
@@ -41,7 +48,7 @@ export function HomeComponent({ navigation, counter, changeCounter, breweriesLis
                         title="Update the title"
                         onPress={() =>
                             navigation.setOptions({
-                                title: "Home Updated!"
+                                title: 'Home Updated!',
                             })
                         }
                     />
@@ -52,24 +59,32 @@ export function HomeComponent({ navigation, counter, changeCounter, breweriesLis
                     />
 
                     <View style={styles.sectionContainer}>
-                        <Text testID="screen_text" style={styles.sectionTitle}>Home Screen</Text>
-                        <Text testID="counter_value" style={styles.sectionTitle}>Counter {counter.toString()}</Text>
-                        {breweriesListError &&
+                        <Text testID="screen_text" style={styles.sectionTitle}>
+                            Home Screen
+                        </Text>
+                        <Text
+                            testID="counter_value"
+                            style={styles.sectionTitle}>
+                            Counter {counter.toString()}
+                        </Text>
+                        {breweriesListError && (
                             <Text>Error fetching list...</Text>
-                        }
-                        {fetchingBreweriesList && !breweriesList &&
+                        )}
+                        {fetchingBreweriesList && !breweriesList && (
                             <Text>Loading...</Text>
-                        }
-                        {breweriesList &&
+                        )}
+                        {breweriesList && (
                             <FlatList
                                 contentContainerStyle={styles.scrollView}
                                 data={breweriesList}
                                 keyExtractor={item => item.id.toString()}
                                 renderItem={({ item }) => (
-                                    <Text style={styles.highlight}>{item.name}</Text>
+                                    <Text style={styles.highlight}>
+                                        {item.name}
+                                    </Text>
                                 )}
                             />
-                        }
+                        )}
                     </View>
                 </View>
             </SafeAreaView>

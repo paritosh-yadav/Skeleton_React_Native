@@ -1,14 +1,14 @@
 /**
  * @flow
  */
-import React from "react";
-import { connect } from "react-redux";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { changeCounter, fetchingBreweries } from "statemanagement";
-import { MenuButton } from "components";
-import { HomeComponent } from "./home.component";
+import React from 'react';
+import { connect } from 'react-redux';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { changeCounter, fetchingBreweries } from 'statemanagement';
+import { MenuButton } from 'components';
+import { HomeComponent } from './home.component';
 // import Config from "react-native-config";
-import { networkDetector, constants } from "utils";
+import { networkDetector, constants } from 'utils';
 
 type HomeScreenNavigationProp = StackNavigationProp<null, 'Home'>;
 type Props = {
@@ -24,17 +24,15 @@ class HomeContainer extends React.Component<Props> {
     async componentDidMount() {
         const { navigation } = this.props;
         navigation.setOptions({
-            title: "Home Screen",
-            headerLeft: () => (
-                <MenuButton onTap={navigation.openDrawer} />
-            ),
+            title: 'Home Screen',
+            headerLeft: () => <MenuButton onTap={navigation.openDrawer} />,
         });
         try {
-            await this.props.fetchingBreweries("breweries", null, null);
+            await this.props.fetchingBreweries('breweries', null, null);
         } catch (error) {
             if (error.code === constants.AXIOS_TIMEOUT_ERROR_CODE) {
                 // Handle timeout
-                console.log("request timeout");
+                console.log('request timeout');
             }
         }
     }
@@ -63,7 +61,10 @@ const mapStateToProps = state => ({
 // Maping dispatch with components props
 const mapDispatchToProps = {
     changeCounter,
-    fetchingBreweries
+    fetchingBreweries,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(networkDetector(HomeContainer));
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(networkDetector(HomeContainer));
