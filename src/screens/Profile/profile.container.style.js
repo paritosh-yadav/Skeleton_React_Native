@@ -1,16 +1,16 @@
 /**
  * @flow
  */
-import { StyleSheet } from "react-native";
-import { themeStyle } from "globalstyles";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { StyleSheet } from 'react-native';
+import { themeStyle } from 'globalstyles';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default StyleSheet.create({
     scrollView: {
         backgroundColor: Colors.lighter,
     },
     engine: {
-        position: "absolute",
+        position: 'absolute',
         right: 0,
     },
     body: {
@@ -22,30 +22,31 @@ export default StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 24,
-        fontWeight: "600",
+        fontWeight: '600',
         color: Colors.black,
     },
     sectionDescription: {
         marginTop: 8,
         fontSize: 18,
-        fontWeight: "400",
+        fontWeight: '400',
         color: Colors.dark,
     },
     highlight: {
-        fontWeight: "700",
+        fontWeight: '700',
     },
     footer: {
         color: Colors.dark,
         fontSize: 12,
-        fontWeight: "600",
+        fontWeight: '600',
         padding: 4,
         paddingRight: 12,
-        textAlign: "right",
+        textAlign: 'right',
     },
     headerBackImageStyle: {
         width: 20,
         height: 20,
         marginLeft: 5,
-        tintColor: themeStyle.appTheme.colors.primaryContrast
-    }
+        tintColor: themeStyle.appTheme.colors.primaryContrast,
+    },
+    logoStyle: { width: 160, height: 30 },
 });

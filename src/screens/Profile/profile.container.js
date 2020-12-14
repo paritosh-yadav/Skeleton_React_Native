@@ -1,7 +1,7 @@
 /**
  * @flow
  */
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -10,12 +10,12 @@ import {
     StatusBar,
     Button,
     Image,
-} from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
+} from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-import { Header } from "react-native/Libraries/NewAppScreen";
-import styles from "./profile.container.style";
-import { logo, backIcon } from "assets";
+import { Header } from 'react-native/Libraries/NewAppScreen';
+import styles from './profile.container.style';
+import { logo, backIcon } from 'assets';
 
 class LogoTitle extends React.Component<{}> {
     render() {
@@ -23,7 +23,7 @@ class LogoTitle extends React.Component<{}> {
             <Image
                 source={logo}
                 resizeMode="contain"
-                style={{ width: 160, height: 30 }}
+                style={styles.logoStyle}
             />
         );
     }
@@ -39,14 +39,26 @@ export default class ProfileScreen extends React.Component<Props> {
         navigation.setOptions({
             headerTitle: <LogoTitle />,
             headerBackTitleVisible: false,
-            headerRight: () => (<Button onPress={this.onHeaderRightTap} title="Info" color="#fff" />),
-            headerBackImage: () => (<Image source={backIcon} style={styles.headerBackImageStyle} resizeMode="contain" />)
+            headerRight: () => (
+                <Button
+                    onPress={this.onHeaderRightTap}
+                    title="Info"
+                    color="#fff"
+                />
+            ),
+            headerBackImage: () => (
+                <Image
+                    source={backIcon}
+                    style={styles.headerBackImageStyle}
+                    resizeMode="contain"
+                />
+            ),
         });
     }
 
     onHeaderRightTap = () => {
-        console.log("This is a button!");
-    }
+        console.log('This is a button!');
+    };
 
     render() {
         return (
@@ -60,10 +72,14 @@ export default class ProfileScreen extends React.Component<Props> {
                         <View style={styles.body}>
                             <Button
                                 title="Go to Settings"
-                                onPress={() => this.props.navigation.navigate("Settings")}
+                                onPress={() =>
+                                    this.props.navigation.navigate('Settings')
+                                }
                             />
                             <View style={styles.sectionContainer}>
-                                <Text style={styles.sectionTitle}>Profile Screen</Text>
+                                <Text style={styles.sectionTitle}>
+                                    Profile Screen
+                                </Text>
                             </View>
                         </View>
                     </ScrollView>

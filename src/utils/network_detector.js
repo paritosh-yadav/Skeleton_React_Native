@@ -1,20 +1,22 @@
 /**
  * @flow
  */
-import React, { Component, } from "react";
-import NetInfo from "@react-native-community/netinfo";
-import { NoNetworkScreen } from "components";
-type NetworkdetectorProps = {
-}
+import React, { Component } from 'react';
+import NetInfo from '@react-native-community/netinfo';
+import { NoNetworkScreen } from 'components';
+type NetworkdetectorProps = {};
 type NetworkdetectorState = {
     isConnected: boolean,
-}
+};
 export default (ComposedComponent: any) => {
-    class networkDetector extends Component<NetworkdetectorProps, NetworkdetectorState> {
+    class networkDetector extends Component<
+        NetworkdetectorProps,
+        NetworkdetectorState,
+    > {
         constructor(props: NetworkdetectorProps) {
             super(props);
             this.state = {
-                isConnected: true
+                isConnected: true,
             };
         }
         unsubscribe: () => void;
@@ -32,12 +34,8 @@ export default (ComposedComponent: any) => {
             const { isConnected } = this.state;
             return (
                 <>
-                    {!isConnected && (
-                        <NoNetworkScreen />
-                    )}
-                    {isConnected && (
-                        <ComposedComponent {...this.props} />
-                    )}
+                    {!isConnected && <NoNetworkScreen />}
+                    {isConnected && <ComposedComponent {...this.props} />}
                 </>
             );
         }

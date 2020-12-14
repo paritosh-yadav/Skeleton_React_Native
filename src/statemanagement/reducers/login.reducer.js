@@ -1,16 +1,16 @@
 /**
  * @flow
  */
-import { RESTORE_TOKEN, SIGN_IN, SIGN_OUT } from "../constants/login.constants";
+import { RESTORE_TOKEN, SIGN_IN, SIGN_OUT } from '../constants/login.constants';
 type State = {
     +isLoading: boolean,
     +isSignout: boolean,
-        +userToken: Object,
+    +userToken: Object,
 };
 
-type RestoreTokenAction = { type: RESTORE_TOKEN, token: string, };
-type SignInAction = { type: SIGN_IN, token: string, };
-type SignOutAction = { type: SIGN_OUT, };
+type RestoreTokenAction = { type: RESTORE_TOKEN, token: string };
+type SignInAction = { type: SIGN_IN, token: string };
+type SignOutAction = { type: SIGN_OUT };
 
 type ActionType = SignOutAction & RestoreTokenAction & SignInAction;
 
@@ -19,7 +19,10 @@ const initialState = {
     isSignout: false,
     userToken: null,
 };
-const loginReducer = (state: State = initialState, action: ActionType): State => {
+const loginReducer = (
+    state: State = initialState,
+    action: ActionType,
+): State => {
     switch (action.type) {
         case RESTORE_TOKEN:
             return {

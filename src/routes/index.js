@@ -1,32 +1,44 @@
 /**
  * @flow
  */
-import "react-native-gesture-handler";
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { Image, } from "react-native";
-import AsyncStorage from "@react-native-community/async-storage";
-import { NavigationContainer, useTheme } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Image } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+import { NavigationContainer, useTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { restoreToken } from "statemanagement";
-import { SideMenu, AuthLoadingScreen } from "components";
-import { HomeScreen, DetailScreen, ModalScreen, SettingsScreen, ProfileScreen, LoginScreen } from "screens";
-import { home, settings } from "assets";
-import { themeStyle } from "globalstyles";
+import { restoreToken } from 'statemanagement';
+import { SideMenu, AuthLoadingScreen } from 'components';
+import {
+    HomeScreen,
+    DetailScreen,
+    ModalScreen,
+    SettingsScreen,
+    ProfileScreen,
+    LoginScreen,
+} from 'screens';
+import { home, settings } from 'assets';
+import { themeStyle } from 'globalstyles';
 
 type RouteConfigProps = {
     isLoading: boolean,
     isSignout: boolean,
     userToken: string,
-    fetchToken: (string) => void,
-}
+    fetchToken: string => void,
+};
 
-const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfigProps) => {
+const RouteConfig = ({
+    isLoading,
+    isSignout,
+    userToken,
+    fetchToken,
+}: RouteConfigProps) => {
     // Configuration for stack naigator "screenOption"
-    const stackNavigatorScreenOptions = (colors) => {
+    const stackNavigatorScreenOptions = colors => {
         return {
             headerStyle: {
                 backgroundColor: colors.primary,
@@ -34,7 +46,7 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
             headerBackTitle: null,
             headerTintColor: colors.primaryContrast,
             headerTitleStyle: {
-                fontWeight: "bold",
+                fontWeight: 'bold',
             },
         };
     };
@@ -43,16 +55,22 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
     const tabNavigatorScreenOptions = ({ route }) => ({
         tabBarIcon: ({ color }) => {
             let iconName;
-            if (route.name === "Home") {
+            if (route.name === 'Home') {
                 iconName = home;
-            } else if (route.name === "Settings") {
+            } else if (route.name === 'Settings') {
                 iconName = settings;
             }
             // You can return any component that you like here!
-            return <Image source={iconName} style={{ width: 20, height: 20, tintColor: color }} resizeMode="contain" />;
+            return (
+                <Image
+                    source={iconName}
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{ width: 20, height: 20, tintColor: color }}
+                    resizeMode="contain"
+                />
+            );
         },
     });
-
 
     //Stack Navigators
     const HomeStack = createStackNavigator();
@@ -62,15 +80,13 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
     const Tab = createBottomTabNavigator();
     const Drawer = createDrawerNavigator();
 
-
-
     useEffect(() => {
         // Fetch the token from storage then navigate to our appropriate place
         const bootstrapAsync = async () => {
-            let token: string = "";
+            let token: string = '';
 
             try {
-                token = await AsyncStorage.getItem("userToken");
+                token = await AsyncStorage.getItem('userToken');
             } catch (e) {
                 // Restoring token failed
             }
@@ -83,14 +99,14 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
         };
 
         bootstrapAsync();
-    }, []);
-
+    }, [fetchToken]);
 
     //Stack for Home screens
     const HomeStackScreen = () => {
         const { colors } = useTheme();
         return (
-            <HomeStack.Navigator screenOptions={stackNavigatorScreenOptions(colors)}>
+            <HomeStack.Navigator
+                screenOptions={stackNavigatorScreenOptions(colors)}>
                 <HomeStack.Screen name="Home" component={HomeScreen} />
                 <HomeStack.Screen name="Details" component={DetailScreen} />
                 <HomeStack.Screen name="Profile" component={ProfileScreen} />
@@ -102,9 +118,16 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
     const SettingStackScreen = () => {
         const { colors } = useTheme();
         return (
-            <SettingsStack.Navigator screenOptions={stackNavigatorScreenOptions(colors)}>
-                <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-                <SettingsStack.Screen name="Profile" component={ProfileScreen} />
+            <SettingsStack.Navigator
+                screenOptions={stackNavigatorScreenOptions(colors)}>
+                <SettingsStack.Screen
+                    name="Settings"
+                    component={SettingsScreen}
+                />
+                <SettingsStack.Screen
+                    name="Profile"
+                    component={ProfileScreen}
+                />
             </SettingsStack.Navigator>
         );
     };
@@ -113,7 +136,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
     const ModalStackScreen = () => {
         const { colors } = useTheme();
         return (
-            <ModalStack.Navigator mode="modal" screenOptions={stackNavigatorScreenOptions(colors)}>
+            <ModalStack.Navigator
+                mode="modal"
+                screenOptions={stackNavigatorScreenOptions(colors)}>
                 <ModalStack.Screen name="MyModal" component={ModalScreen} />
             </ModalStack.Navigator>
         );
@@ -122,7 +147,9 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
     //Stack for drawer
     const DrawerStackScreen = () => {
         return (
-            <Drawer.Navigator initialRouteName="Tabs" drawerContent={props => <SideMenu {...props} />}>
+            <Drawer.Navigator
+                initialRouteName="Tabs"
+                drawerContent={props => <SideMenu {...props} />}>
                 <Drawer.Screen name="Tabs" component={TabStackScreen} />
             </Drawer.Navigator>
         );
@@ -151,20 +178,37 @@ const RouteConfig = ({ isLoading, isSignout, userToken, fetchToken }: RouteConfi
 
     return (
         <NavigationContainer theme={themeStyle.appTheme}>
-            <RootStack.Navigator mode="modal" screenOptions={stackNavigatorScreenOptions}>
-                {userToken
-                    ? (<>
-                        <RootStack.Screen options={{ headerShown: false }} name="Drawer" component={DrawerStackScreen} />
-                        <RootStack.Screen options={{ headerShown: false }} name="MyModal" component={ModalStackScreen} />
-                    </>)
-                    : (<>
-                        <RootStack.Screen name="Login" component={LoginScreen}
+            <RootStack.Navigator
+                mode="modal"
+                screenOptions={stackNavigatorScreenOptions}>
+                {userToken ? (
+                    <>
+                        <RootStack.Screen
+                            options={{ headerShown: false }}
+                            name="Drawer"
+                            component={DrawerStackScreen}
+                        />
+                        <RootStack.Screen
+                            options={{ headerShown: false }}
+                            name="MyModal"
+                            component={ModalStackScreen}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <RootStack.Screen
+                            name="Login"
+                            component={LoginScreen}
                             options={{
                                 // When logging out, a pop animation feels intuitive
                                 // You can remove this if you want the default 'push' animation
-                                animationTypeForReplace: isSignout ? "pop" : "push",
-                            }} />
-                    </>)}
+                                animationTypeForReplace: isSignout
+                                    ? 'pop'
+                                    : 'push',
+                            }}
+                        />
+                    </>
+                )}
             </RootStack.Navigator>
         </NavigationContainer>
     );
@@ -179,7 +223,7 @@ const mapStateToProps = state => ({
 
 // Maping dispatch with components props
 const mapDispatchToProps = dispatch => ({
-    fetchToken: (token) => dispatch(restoreToken(token))
+    fetchToken: token => dispatch(restoreToken(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RouteConfig);

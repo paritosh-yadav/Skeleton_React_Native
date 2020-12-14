@@ -1,9 +1,14 @@
 /**
  * @flow
  */
-import axios from "axios";
+import axios from 'axios';
 
-const initiateAPICall = (endpoint: string, method: string, params: Object | null, payload: Object | null) => {
+const initiateAPICall = (
+    endpoint: string,
+    method: string,
+    params: Object | null,
+    payload: Object | null,
+) => {
     return axios({
         method: method,
         url: endpoint,
@@ -11,10 +16,10 @@ const initiateAPICall = (endpoint: string, method: string, params: Object | null
         headers: {
             // extra headers
         },
-        params
+        params,
     });
 };
 
 export default {
-    initiateAPICall
+    initiateAPICall,
 };
